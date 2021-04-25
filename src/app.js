@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const cors = require('cors');
 const app = express();
@@ -11,7 +12,7 @@ const scores = [
 ];
 
 app.use(cors({
-    origin: 'http://localhost:5500',
+    origin: process.env.ORIGIN,
     optionsSuccessStatus: 200,
 }));
 
@@ -29,5 +30,6 @@ app.post('/setScore', (req, res) => {
 });
   
 app.listen(port, () => {
+    console.log(process.env.ORIGIN);
     console.log(`Example app listening at http://localhost:${port}`);
 })
